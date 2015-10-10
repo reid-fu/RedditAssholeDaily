@@ -12,9 +12,11 @@ public class RedditParser {
     }
     private static XMLTree child(XMLTree xml, String tag) {
         int index = -1;
-        for (int i = xml.numberOfChildren() - 1; i >= 0; i--)
-            if (tag.equals(xml.child(i).label()))
+        for (int i = xml.numberOfChildren() - 1; i >= 0; i--){
+            if (tag.equals(xml.child(i).label())){
                 index = i;
+            }
+        }
         return xml.child(index);
     }
    public RedditParser(String userName){
@@ -22,8 +24,8 @@ public class RedditParser {
        this.currentIndex = 0;
    }
    //Returns int of next "item" tag's index
-   private int nextItemIndex(int currentIndex){
-       int i = currentIndex;
+   private int nextItemIndex(){
+       int i = this.currentIndex;
        while(!this.rep.child(i).label().equals("item")){
            i++;
        }
@@ -31,7 +33,7 @@ public class RedditParser {
    }
    //returns string version of comment
    public String nextComment(int indexOfCurrentItem){
-       this.currentIndex = nextItemIndex(indexOfCurrentItem);
+       this.currentIndex = nextItemIndex();
        return child(this.rep.child(currentIndex), "description").child(0).label();
    }
 }
