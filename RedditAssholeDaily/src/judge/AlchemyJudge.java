@@ -15,7 +15,9 @@ public class AlchemyJudge implements CommentJudge {
 		try {
 			XMLTree docSentiment = child(getXMLTree(getURL(comment)), "docSentiment");
 			XMLTree scoreTag = child(docSentiment, "score");
-			double score = Double.parseDouble(scoreTag.child(0).label());
+			/* if no score tag, then comment is considered neutral */
+			double score = (scoreTag == null) ? 0
+					: Double.parseDouble(scoreTag.child(0).label());
 			this.updateCumScore(score);
 			return score;
 		} catch (UnsupportedEncodingException e) {
@@ -49,7 +51,7 @@ public class AlchemyJudge implements CommentJudge {
         for (int i = xml.numberOfChildren() - 1; i >= 0; i--)
             if (tag.equals(xml.child(i).label()))
                 index = i;
-        return xml.child(index);
+        return (index == -1) ? null : xml.child(index);
     }
 	private void updateCumScore(double score){
 		double alpha = .5;

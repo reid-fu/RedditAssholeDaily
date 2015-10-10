@@ -17,7 +17,7 @@ public class RedditParser {
                 index = i;
             }
         }
-        return xml.child(index);
+        return (index == -1) ? null : xml.child(index);
     }
    public RedditParser(String userName){
        this.rep = new XMLTree1(makeURL(userName)).child(0);
