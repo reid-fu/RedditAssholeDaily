@@ -26,14 +26,18 @@ public class RedditParser {
    //Returns int of next "item" tag's index
    private int nextItemIndex(){
        int i = this.currentIndex;
-       while(!this.rep.child(i).label().equals("item")){
+       while(i < this.rep.numberOfChildren() && !this.rep.child(i).label().equals("item")){
            i++;
        }
-       return i;
+       return i < this.rep.numberOfChildren? i : -1;
    }
    //returns string version of comment
    public String nextComment(int indexOfCurrentItem){
        this.currentIndex = nextItemIndex();
        return child(this.rep.child(currentIndex), "description").child(0).label();
+   }
+   
+   public hasNextItem(){
+       return nextItemIndex != -1;
    }
 }
