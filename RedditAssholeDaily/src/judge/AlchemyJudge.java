@@ -16,6 +16,16 @@ public class AlchemyJudge implements CommentJudge {
 			return -1;
 		}
 	}
+	@Override
+	public double cumulativeScore() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public Verdict verdict() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	//PRIVATE METHODS
 	private String getURL(String comment) throws UnsupportedEncodingException{
 		return "http://gateway-a.watsonplatform.net/calls/"

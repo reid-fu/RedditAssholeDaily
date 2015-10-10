@@ -9,5 +9,9 @@ public class Run {
 		if(username == null)
 			System.exit(0);
 		RedditParser parser = new RedditParser(username);
+		String comment = null;
+		while((comment = parser.nextComment()) != null){
+			
+		}
 	}
 }
