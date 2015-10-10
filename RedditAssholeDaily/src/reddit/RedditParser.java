@@ -12,9 +12,11 @@ public class RedditParser {
     }
     private static XMLTree child(XMLTree xml, String tag) {
         int index = -1;
-        for (int i = xml.numberOfChildren() - 1; i >= 0; i--)
-            if (tag.equals(xml.child(i).label()))
+        for (int i = xml.numberOfChildren() - 1; i >= 0; i--){
+            if (tag.equals(xml.child(i).label())){
                 index = i;
+            }
+        }
         return xml.child(index);
     }
     
