@@ -1,8 +1,8 @@
-import judge.AlchemyAccessor;
+import judge.AlchemyJudge;
 
 public class Test {
 	public static void main(String[] args){
-		AlchemyAccessor alAcc = new AlchemyAccessor();
-		System.out.println(alAcc.getXML("good girls give head"));
+		AlchemyJudge alAcc = new AlchemyJudge();
+		System.out.println(alAcc.score("good girls give head"));
 	}
 }
