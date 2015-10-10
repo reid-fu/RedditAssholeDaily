@@ -32,7 +32,7 @@ public class RedditParser {
        return i;
    }
    //returns string version of comment
-   public String nextComment(int indexOfCurrentItem){
+   public String nextComment(){
        this.currentIndex = nextItemIndex();
        return child(this.rep.child(currentIndex), "description").child(0).label();
    }
