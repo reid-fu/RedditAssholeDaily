@@ -6,9 +6,12 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class JIOManager implements IOManager {
+	private static int dialogWidth = 400, dialogHeight = 200;
 	@Override
 	public String inputUser() {
 		UsernameDialog dialog = new UsernameDialog();
+		dialog.setSize(dialogWidth, dialogHeight);
+		dialog.setLocationRelativeTo(null);
 		dialog.setVisible(true);
 		return dialog.cancelled() ? null : dialog.username();
 	}
