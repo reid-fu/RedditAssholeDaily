@@ -1,6 +1,5 @@
-import components.xmltree.XMLTree;
-import components.xmltree.XMLTree1;
-
+package reddit;
+import components.xmltree.*;
 
 public class RedditParser {
     //base address to fetch RSS feed
