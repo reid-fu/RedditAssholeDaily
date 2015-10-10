@@ -3,7 +3,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import components.xmltree.*;
 
-public class AlchemyAccessor implements CommentJudge {
+public class AlchemyJudge implements CommentJudge {
 	private static String key = "a7237fba2dc27fb0a285626142515aa4f87e0bf2";
 	@Override
 	public double score(String comment) {
