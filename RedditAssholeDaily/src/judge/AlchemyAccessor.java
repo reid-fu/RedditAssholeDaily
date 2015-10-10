@@ -9,6 +9,7 @@ public class AlchemyAccessor implements CommentJudge {
 	public double score(String comment) {
 		return -1;
 	}
+	//TEST METHODS
 	public String getXML(String comment){
 		try {
 			return new XMLTree1(this.getURL(comment)).toString();
