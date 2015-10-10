@@ -1,5 +1,4 @@
 import javax.swing.JOptionPane;
-
 import io.*;
 import judge.*;
 import judge.CommentJudge.Verdict;

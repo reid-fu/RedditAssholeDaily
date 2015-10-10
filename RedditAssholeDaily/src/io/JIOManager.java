@@ -1,5 +1,6 @@
 package io;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,9 +24,6 @@ public class JIOManager implements IOManager {
 			super((Frame)null, "RedditAssholeDaily", true);
 			this.cancelled = true;
 			setLayout(new BorderLayout());
-			add(new JLabel("This app analyzes comments by Reddit users to "
-					+ "see how much of an asshole they are. Enter a Reddit username "
-					+ "in the box below"), BorderLayout.PAGE_START);
 			add(this.inputPanel(), BorderLayout.CENTER);
 			add(this.confirmPanel(), BorderLayout.PAGE_END);
 		}
@@ -37,6 +35,14 @@ public class JIOManager implements IOManager {
 		}
 		private JPanel inputPanel(){
 			JPanel panel = new JPanel();
+			JTextArea instructions =
+					new JTextArea("This app analyzes comments by Reddit "
+					+ "users to see how much of an asshole they are. Enter a Reddit "
+					+ "username in the box below:");
+			instructions.setSize(dialogWidth-20, dialogHeight/2);
+			instructions.setLineWrap(true);
+			instructions.setBackground(Color.gray);
+			panel.add(instructions);
 			this.userField = new JTextField(25);
 			panel.add(this.userField);
 			return panel;
