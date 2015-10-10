@@ -12,6 +12,8 @@ public class Test {
 	}
 	public static void testParser(){
 		RedditParser parser = new RedditParser("cricketorcrickets");
-		
+		String comment = null;
+		while((comment = parser.nextComment()) != null)
+			System.out.println(comment);
 	}
 }

@@ -26,14 +26,15 @@ public class RedditParser {
    //Returns int of next "item" tag's index
    private int nextItemIndex(){
        int i = this.currentIndex;
-       while(i < this.rep.numberOfChildren() && !this.rep.child(i).label().equals("item")){
+       while(i < rep.numberOfChildren() && !rep.child(i).label().equals("item")){
            i++;
        }
-       return i < this.rep.numberOfChildren() ? i : -1;
+       return i < rep.numberOfChildren() ? i : -1;
    }
    //returns string version of comment
    public String nextComment(){
        this.currentIndex = nextItemIndex();
-       return child(this.rep.child(currentIndex), "description").child(0).label();
+       return this.currentIndex == -1 ? null
+    		   : child(rep.child(currentIndex), "description").child(0).label();
    }
 }
