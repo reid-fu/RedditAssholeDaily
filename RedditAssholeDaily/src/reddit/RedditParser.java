@@ -20,15 +20,15 @@ public class RedditParser {
         return xml.child(index);
     }
    public RedditParser(String userName){
-       this.rep = new XMLTree1(makeURL(userName));
+       this.rep = new XMLTree1(makeURL(userName)).child(0);
        this.currentIndex = 0;
    }
    //Returns int of next "item" tag's index
    private int nextItemIndex(){
        int i = this.currentIndex;
-       while(i < rep.numberOfChildren() && !rep.child(i).label().equals("item")){
+       do {
            i++;
-       }
+       } while(i < rep.numberOfChildren() && !rep.child(i).label().equals("item"));
        return i < rep.numberOfChildren() ? i : -1;
    }
    //returns string version of comment
