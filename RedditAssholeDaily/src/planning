@@ -1,0 +1,5 @@
+*Requirements*
+- input reddit username
+- get comment history of user
+- judge comments for assholeness (negative sentiments)
+- output user's score for assholeness as facebook thermometer
