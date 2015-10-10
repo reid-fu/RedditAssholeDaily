@@ -25,7 +25,7 @@ public class RedditParser {
    }
    //Returns int of next "item" tag's index
    private int nextItemIndex(){
-       int i = this.currentIndex;
+       int i = this.currentIndex + 1;
        while(i < rep.numberOfChildren() && !rep.child(i).label().equals("item")){
            i++;
        }
