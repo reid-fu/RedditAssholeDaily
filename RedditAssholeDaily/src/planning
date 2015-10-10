@@ -1,6 +1,11 @@
-*Requirements*
+*Requirements and Design Workflow*
 - input reddit username
 - get comment history of user
 - judge comments for assholeness (negative sentiments)
 - output user's score for assholeness as facebook thermometer
 - tracks assholes in database, publishes data to world
+
+*Modules/Components*
+- module: web scraper
+- module: neural network
+- module: I/O manager
