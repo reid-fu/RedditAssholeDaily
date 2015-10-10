@@ -1,4 +1,6 @@
+package RedditAssholeDaily.src;
 
-public class FuckYouGit {
-
+public class FuckYouGit{
+    public FuckYouGit(){
+    }
 }
