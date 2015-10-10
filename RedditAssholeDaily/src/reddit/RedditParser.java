@@ -2,9 +2,10 @@ package reddit;
 import components.xmltree.*;
 
 public class RedditParser {
-    //base address to fetch RSS feed
+    /** base address to fetch RSS feed */
     private static final String BASE = "https://www.reddit.com/user/";
-
+    XMLTree rep;
+    int currentIndex;
     //returns URL to fetch RSS feed from using userName
     private static String makeURL(String userName) {
         return BASE + userName + ".rss";
@@ -16,16 +17,10 @@ public class RedditParser {
                 index = i;
         return xml.child(index);
     }
-    
-   XMLTree rep;
-   int currentIndex;
-   
    public RedditParser(String userName){
        this.rep = new XMLTree1(makeURL(userName));
        this.currentIndex = 0;
    }
-   
-   
    //Returns int of next "item" tag's index
    private int getNextCommentItemIndex(int currentIndex){
        int i = currentIndex;
@@ -34,11 +29,9 @@ public class RedditParser {
        }
        return i;
    }
-   
    //returns string version of comment
    public String getNextComment(int indexOfCurrentItem){
        this.currentIndex = getNextCommentItemIndex(indexOfCurrentItem);
        return child(this.rep.child(currentIndex), "description").child(0).label();
    }
-
 }
