@@ -29,15 +29,11 @@ public class RedditParser {
        while(i < this.rep.numberOfChildren() && !this.rep.child(i).label().equals("item")){
            i++;
        }
-       return i < this.rep.numberOfChildren? i : -1;
+       return i < this.rep.numberOfChildren() ? i : -1;
    }
    //returns string version of comment
    public String nextComment(){
        this.currentIndex = nextItemIndex();
        return child(this.rep.child(currentIndex), "description").child(0).label();
-   }
-   
-   public hasNextItem(){
-       return nextItemIndex != -1;
    }
 }
