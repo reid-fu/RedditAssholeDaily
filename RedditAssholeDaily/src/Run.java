@@ -1,9 +1,13 @@
+import io.*;
 import reddit.RedditParser;
 
 public class Run {
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {
-		//TODO put in IO manager
-		RedditParser parser = new RedditParser(null);
+		IOManager io = new JIOManager();
+		String username = io.inputUser();
+		if(username == null)
+			System.exit(0);
+		RedditParser parser = new RedditParser(username);
 	}
 }
