@@ -8,4 +8,5 @@
 *Modules/Components*
 - module: web scraper
 - module: neural network
+-- AlchemyAccessor
 - module: I/O manager
