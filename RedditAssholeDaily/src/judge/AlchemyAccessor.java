@@ -7,15 +7,13 @@ public class AlchemyAccessor implements CommentJudge {
 	private static String key = "a7237fba2dc27fb0a285626142515aa4f87e0bf2";
 	@Override
 	public double score(String comment) {
-		return -1;
-	}
-	//TEST METHODS
-	public String getXML(String comment){
 		try {
-			return new XMLTree1(this.getURL(comment)).toString();
+			XMLTree docSentiment = child(getXMLTree(getURL(comment)), "docSentiment");
+			XMLTree score = child(docSentiment, "score");
+			return Double.parseDouble(score.child(0).label());
 		} catch (UnsupportedEncodingException e) {
 			System.err.println("UTF-8 encoding not supported");
-			return null;
+			return -1;
 		}
 	}
 	//PRIVATE METHODS
@@ -23,6 +21,9 @@ public class AlchemyAccessor implements CommentJudge {
 		return "http://gateway-a.watsonplatform.net/calls/"
 				+ "text/TextGetTextSentiment?apikey=" + key + "&text="
 	            + URLEncoder.encode(comment, "UTF-8");
+	}
+	private XMLTree getXMLTree(String URL){
+		return new XMLTree1(URL);
 	}
 	private XMLTree child(XMLTree xml, String tag) {
         int index = -1;
