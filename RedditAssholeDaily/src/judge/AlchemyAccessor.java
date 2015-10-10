@@ -1,3 +1,4 @@
+package judge;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import components.xmltree.XMLTree1;
@@ -15,6 +16,7 @@ public class AlchemyAccessor {
 			return null;
 		}
 	}
+	//PRIVATE METHODS
 	private String getURL(String comment) throws UnsupportedEncodingException{
 		return "http://gateway-a.watsonplatform.net/calls/"
 				+ "text/TextGetTextSentiment?apikey=" + key + "&text="
