@@ -22,7 +22,7 @@ public class RedditParser {
        this.currentIndex = 0;
    }
    //Returns int of next "item" tag's index
-   private int getNextCommentItemIndex(int currentIndex){
+   private int nextItemIndex(int currentIndex){
        int i = currentIndex;
        while(!this.rep.child(i).label().equals("item")){
            i++;
@@ -30,8 +30,8 @@ public class RedditParser {
        return i;
    }
    //returns string version of comment
-   public String getNextComment(int indexOfCurrentItem){
-       this.currentIndex = getNextCommentItemIndex(indexOfCurrentItem);
+   public String nextComment(int indexOfCurrentItem){
+       this.currentIndex = nextItemIndex(indexOfCurrentItem);
        return child(this.rep.child(currentIndex), "description").child(0).label();
    }
 }
