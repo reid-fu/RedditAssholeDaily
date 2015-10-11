@@ -1,7 +1,5 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+package io;
+import java.io.*;
 import java.util.Map;
 
 public class HTMLGenerator {
