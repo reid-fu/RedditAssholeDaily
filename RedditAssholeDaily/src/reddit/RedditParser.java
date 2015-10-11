@@ -1,4 +1,6 @@
 package reddit;
+import javax.swing.JOptionPane;
+
 import components.xmltree.*;
 
 public class RedditParser {
@@ -20,7 +22,12 @@ public class RedditParser {
         return (index == -1) ? null : xml.child(index);
     }
    public RedditParser(String userName){
-       this.rep = new XMLTree1(makeURL(userName)).child(0);
+       try {
+		this.rep = new XMLTree1(makeURL(userName)).child(0);
+	} catch (AssertionError e) {
+		JOptionPane.showMessageDialog(null,
+				"You don't exist, or you spelled your name wrong");
+	}
        this.currentIndex = 0;
    }
    //Returns int of next "item" tag's index

@@ -14,12 +14,14 @@ public class Run {
 		CommentJudge judge = new AlchemyJudge();
 		String comment = null;
 		while((comment = parser.nextComment()) != null){
-			judge.score(comment);
+			System.out.println(judge.score(comment) + "\t" + comment);
 		}
 		if(judge.verdict() == Verdict.ASSHOLE){
-			JOptionPane.showMessageDialog(null, "You're an Asshole");
+			JOptionPane.showMessageDialog(null,
+					"You're an Asshole. Your score is " + judge.cumulativeScore());
 		} else {
-			JOptionPane.showMessageDialog(null, "You're not an Asshole");
+			JOptionPane.showMessageDialog(null,
+					"You're not an Asshole. Your score is " + judge.cumulativeScore());
 		}
 	}
 }
