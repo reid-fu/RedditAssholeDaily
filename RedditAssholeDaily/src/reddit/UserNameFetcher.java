@@ -1,6 +1,6 @@
+package reddit;
 import java.util.Set;
 import java.util.TreeSet;
-
 import components.xmltree.XMLTree;
 import components.xmltree.XMLTree1;
 
@@ -11,16 +11,7 @@ import components.xmltree.XMLTree1;
  *
  */
 public class UserNameFetcher {
-
-    /**
-     * Set containing user names.
-     */
     private static final Set<String> USER_SET = new TreeSet<>();
-
-    public UserNameFetcher() {
-
-    }
-
     public void addUserNames(String url) {
         System.out.println(url);
         XMLTree rss = new XMLTree1(url);
@@ -39,9 +30,7 @@ public class UserNameFetcher {
         }
         System.out.println(USER_SET);
     }
-    
-    public static getUserSet(){
+    public static Set<String> getUserSet(){
         return USER_SET;
     }
-
 }
