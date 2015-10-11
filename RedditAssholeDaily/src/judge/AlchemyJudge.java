@@ -31,8 +31,12 @@ public class AlchemyJudge implements CommentJudge {
 	}
 	@Override
 	public Verdict verdict() {
-		if(this.cumScore < 0){
+		if(this.cumScore < -0.25){
+			return Verdict.DOUCHEBAG;
+		} else if(this.cumScore < 0){
 			return Verdict.ASSHOLE;
+		} else if(this.cumScore < .25){
+			return Verdict.NEUTRAL;
 		} else {
 			return Verdict.NICE;
 		}
