@@ -1,23 +1,13 @@
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-
+import java.util.*;
 import javax.swing.JOptionPane;
-
 import judge.AlchemyJudge;
 import judge.CommentJudge;
-import reddit.FrontpageCrawler;
-import reddit.RedditParser;
-import reddit.UserNameFetcher;
+import reddit.*;
 
 public class CrawlerRun {
 
     public static void main(String[] args) {
-        try {
-			new FrontpageCrawler().initiateCrawling();
-		} catch (AssertionError e) {
-			JOptionPane.showMessageDialog(null, "Unable to process Reddit");
-		}
+        crawl();
         Set<String> users = UserNameFetcher.getUserSet();
         Map<String, Double> map = new TreeMap<>();
         for (String str : users) {
@@ -30,5 +20,18 @@ public class CrawlerRun {
             map.put(str, judge.cumulativeScore());
         }
         System.out.println(map);
+    }
+    public static void crawl(){
+    	try {
+			new FrontpageCrawler().initiateCrawling();
+		} catch (AssertionError e) {
+			JOptionPane.showMessageDialog(null, "Unable to process Reddit");
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e1) {
+				e1.printStackTrace();
+			}
+			System.exit(1);
+		}
     }
 }
