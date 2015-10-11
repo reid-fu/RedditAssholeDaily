@@ -4,7 +4,7 @@ import judge.*;
 import judge.CommentJudge.Verdict;
 import reddit.RedditParser;
 
-public class Run {
+public class SingleRun {
 	public static void main(String[] args) {
 		IOManager io = new JIOManager();
 		String username = io.inputUser();

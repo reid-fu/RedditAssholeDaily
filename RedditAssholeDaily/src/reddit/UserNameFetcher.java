@@ -3,6 +3,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import components.xmltree.XMLTree;
 import components.xmltree.XMLTree1;
+import xml.XMLUtil;
 
 /**
  * Gets User names from RSS feeds.
@@ -17,11 +18,11 @@ public class UserNameFetcher {
         XMLTree rss = new XMLTree1(url);
         rss = rss.child(0);
         //get's first occurence of item tag which is NOT the tag that contains user info
-        int i = FrontpageCrawler.getChildElement(rss, "item");
+        int i = XMLUtil.indexOf(rss, "item");
         for (i = i + 1; i < rss.numberOfChildren(); i++) {
             XMLTree child = rss.child(i);
             if (child.label().equals("item")) {
-                int indexOfTitle = FrontpageCrawler.getChildElement(child,
+                int indexOfTitle = XMLUtil.indexOf(child,
                         "title");
                 String title = child.child(indexOfTitle).child(0).label();
                 String userName = title.substring(0, title.indexOf(" "));
