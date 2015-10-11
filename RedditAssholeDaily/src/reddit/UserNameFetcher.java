@@ -22,8 +22,7 @@ public class UserNameFetcher {
         for (i = i + 1; i < rss.numberOfChildren(); i++) {
             XMLTree child = rss.child(i);
             if (child.label().equals("item")) {
-                int indexOfTitle = XMLUtil.indexOf(child,
-                        "title");
+                int indexOfTitle = XMLUtil.indexOf(child, "title");
                 String title = child.child(indexOfTitle).child(0).label();
                 String userName = title.substring(0, title.indexOf(" "));
                 USER_SET.add(userName);
