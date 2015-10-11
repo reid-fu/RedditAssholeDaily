@@ -7,12 +7,14 @@ import judge.CommentJudge;
 import reddit.*;
 
 public class CrawlerRun {
+	private static int NUM_COMMENTS = 10;
     public static void main(String[] args) {
         crawl();
         Set<String> users = UserNameFetcher.getUserSet();
         Map<String, Double> map = new TreeMap<>();
         for (String user : users) {
             double score = scoreUser(user);
+            System.out.println("User " + user + " got score " + score);
             map.put(user, score);
         }
         HTMLGenerator writer = new HTMLGenerator(map, "output.html");
@@ -38,8 +40,10 @@ public class CrawlerRun {
     public static double scoreUser(String user){
     	RedditParser parser = new RedditParser(user);
         CommentJudge judge = new AlchemyJudge();
-        String comment;
-        while ((comment = parser.nextComment()) != null) {
+        String comment = null;
+        int numComments = 0;
+        while (numComments < NUM_COMMENTS &&
+        		(comment = parser.nextComment()) != null) {
             judge.score(comment);
         }
     	return judge.cumulativeScore();

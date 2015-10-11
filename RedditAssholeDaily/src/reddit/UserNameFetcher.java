@@ -14,7 +14,7 @@ import xml.XMLUtil;
 public class UserNameFetcher {
     private static final Set<String> USER_SET = new TreeSet<>();
     public void addUserNames(String url) {
-        System.out.println(url);
+        System.out.println("Processing page " + url);
         XMLTree rss = new XMLTree1(url);
         rss = rss.child(0);
         //get's first occurence of item tag which is NOT the tag that contains user info
@@ -26,9 +26,9 @@ public class UserNameFetcher {
                 String title = child.child(indexOfTitle).child(0).label();
                 String userName = title.substring(0, title.indexOf(" "));
                 USER_SET.add(userName);
+                System.out.println("Added user " + userName);
             }
         }
-        System.out.println(USER_SET);
     }
     public static Set<String> getUserSet(){
         return USER_SET;

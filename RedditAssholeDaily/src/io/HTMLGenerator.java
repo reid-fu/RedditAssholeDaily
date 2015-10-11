@@ -21,6 +21,7 @@ public class HTMLGenerator {
         this.filePath = filePath;
     }
     public void generateHTML() throws IOException {
+    	System.out.println("generating HTML file");
         PrintWriter pw = new PrintWriter(filePath);
         outputHeader(pw);
         for (String str : this.rep.keySet()) {
