@@ -4,9 +4,10 @@ import xml.XMLUtil;
 
 public class FrontpageCrawler {
     private static final String REDDIT_RSS = "http://www.reddit.com/.rss";
-    public void initiateCrawling() {
+    private static final int NUM_FEEDS = 10;
+    public void initiateCrawling() throws AssertionError {
         XMLTree redditRss = new XMLTree1(REDDIT_RSS);
-        int j = 10; //Used to control number of feeds to consider in front page
+        int j = NUM_FEEDS;
         //get channel as root
         redditRss = redditRss.child(0);
         for (int i = 0; i < redditRss.numberOfChildren(); i++) {
@@ -19,7 +20,7 @@ public class FrontpageCrawler {
                 fetch.addUserNames(child.child(index).child(0).label() + ".rss");
                 if(j == 0){
                     return;
-                }else{
+                } else{
                     j--;
                 }
             }

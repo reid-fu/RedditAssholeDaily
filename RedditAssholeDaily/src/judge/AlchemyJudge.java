@@ -2,6 +2,7 @@ package judge;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import components.xmltree.*;
+import xml.XMLUtil;
 
 /** judges comments using Alchemy API;
  * cumulative score calculated using exponential averaging
@@ -13,8 +14,9 @@ public class AlchemyJudge implements CommentJudge {
 	@Override
 	public double score(String comment) {
 		try {
-			XMLTree docSentiment = child(getXMLTree(getURL(comment)), "docSentiment");
-			XMLTree scoreTag = child(docSentiment, "score");
+			XMLTree docSentiment = XMLUtil.child(
+					XMLUtil.getXMLTree(getURL(comment)), "docSentiment");
+			XMLTree scoreTag = XMLUtil.child(docSentiment, "score");
 			/* if no score tag, then comment is considered neutral */
 			double score = (scoreTag == null) ? 0
 					: Double.parseDouble(scoreTag.child(0).label());
@@ -47,16 +49,6 @@ public class AlchemyJudge implements CommentJudge {
 				+ "text/TextGetTextSentiment?apikey=" + key + "&text="
 	            + URLEncoder.encode(comment, "UTF-8");
 	}
-	private XMLTree getXMLTree(String URL){
-		return new XMLTree1(URL);
-	}
-	private XMLTree child(XMLTree xml, String tag) {
-        int index = -1;
-        for (int i = xml.numberOfChildren() - 1; i >= 0; i--)
-            if (tag.equals(xml.child(i).label()))
-                index = i;
-        return (index == -1) ? null : xml.child(index);
-    }
 	private void updateCumScore(double score){
 		double alpha = .5;
 		this.cumScore = alpha*score + (1 - alpha)*this.cumScore;
