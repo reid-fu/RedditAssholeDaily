@@ -1,5 +1,5 @@
-import components.xmltree.XMLTree;
-import components.xmltree.XMLTree1;
+package reddit;
+import components.xmltree.*;
 
 public class FrontpageCrawler {
     private static final String REDDIT_RSS = "http://www.reddit.com/.rss";

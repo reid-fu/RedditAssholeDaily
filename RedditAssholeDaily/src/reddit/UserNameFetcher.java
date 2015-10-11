@@ -1,6 +1,6 @@
+package reddit;
 import java.util.Set;
 import java.util.TreeSet;
-
 import components.xmltree.XMLTree;
 import components.xmltree.XMLTree1;
 
