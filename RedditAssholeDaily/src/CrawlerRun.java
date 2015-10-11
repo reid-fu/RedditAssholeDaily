@@ -1,5 +1,7 @@
+import java.io.IOException;
 import java.util.*;
 import javax.swing.JOptionPane;
+import io.HTMLGenerator;
 import judge.AlchemyJudge;
 import judge.CommentJudge;
 import reddit.*;
@@ -13,7 +15,12 @@ public class CrawlerRun {
             double score = scoreUser(user);
             map.put(user, score);
         }
-        System.out.println(map);
+        HTMLGenerator writer = new HTMLGenerator(map, "output.html");
+        try {
+			writer.generateHTML();
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "Can't write HTML file");
+		}
     }
     public static void crawl(){
     	try {

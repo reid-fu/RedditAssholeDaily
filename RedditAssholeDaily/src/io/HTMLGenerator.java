@@ -4,7 +4,6 @@ import java.util.Map;
 
 public class HTMLGenerator {
     private static final String TITLE = "Toxicity of Reddit Users";
-
     private static void outputHeader(PrintWriter fout) {
         fout.println("<html>");
         fout.println("<head>");
@@ -16,14 +15,13 @@ public class HTMLGenerator {
     }
 
     Map<String, Double> rep;
-
-    public HTMLGenerator(Map<String, Double> userNames) {
+    private String filePath;
+    public HTMLGenerator(Map<String,Double> userNames, String filePath) {
         this.rep = userNames;
+        this.filePath = filePath;
     }
-
     public void generateHTML() throws IOException {
-        PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(
-                "output.html")));
+        PrintWriter pw = new PrintWriter(filePath);
         outputHeader(pw);
         for (String str : this.rep.keySet()) {
             pw.println("<td>");
