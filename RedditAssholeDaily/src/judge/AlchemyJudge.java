@@ -34,7 +34,7 @@ public class AlchemyJudge implements CommentJudge {
 		if(this.cumScore < 0){
 			return Verdict.ASSHOLE;
 		} else {
-			return Verdict.NONASSHOLE;
+			return Verdict.NICE;
 		}
 	}
 	//PRIVATE METHODS

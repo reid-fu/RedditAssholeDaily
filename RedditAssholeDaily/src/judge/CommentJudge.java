@@ -1,7 +1,7 @@
 package judge;
 
 public interface CommentJudge {
-	public enum Verdict {ASSHOLE, NONASSHOLE}
+	public enum Verdict {DOUCHEBAG, ASSHOLE, NEUTRAL, NICE}
 	/** @param comment comment to judge
 	 * @return score for comment
 	 */
