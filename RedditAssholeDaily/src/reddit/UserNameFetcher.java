@@ -1,6 +1,6 @@
-package reddit;
 import java.util.Set;
 import java.util.TreeSet;
+
 import components.xmltree.XMLTree;
 import components.xmltree.XMLTree1;
 
@@ -12,7 +12,10 @@ import components.xmltree.XMLTree1;
  */
 public class UserNameFetcher {
 
-    private static final Set<String> retVal = new TreeSet<>();
+    /**
+     * Set containing user names.
+     */
+    public static final Set<String> USER_SET = new TreeSet<>();
 
     public UserNameFetcher() {
 
@@ -31,10 +34,10 @@ public class UserNameFetcher {
                         "title");
                 String title = child.child(indexOfTitle).child(0).label();
                 String userName = title.substring(0, title.indexOf(" "));
-                retVal.add(userName);
+                USER_SET.add(userName);
             }
         }
-        System.out.println(retVal);
+        System.out.println(USER_SET);
     }
 
 }
