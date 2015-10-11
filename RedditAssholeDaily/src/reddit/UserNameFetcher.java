@@ -15,13 +15,13 @@ public class UserNameFetcher {
     /**
      * Set containing user names.
      */
-    public static final Set<String> USER_SET = new TreeSet<>();
+    private static final Set<String> USER_SET = new TreeSet<>();
 
     public UserNameFetcher() {
 
     }
 
-    public void getUserNames(String url) {
+    public void addUserNames(String url) {
         System.out.println(url);
         XMLTree rss = new XMLTree1(url);
         rss = rss.child(0);
@@ -38,6 +38,10 @@ public class UserNameFetcher {
             }
         }
         System.out.println(USER_SET);
+    }
+    
+    public static getUserSet(){
+        return USER_SET;
     }
 
 }
